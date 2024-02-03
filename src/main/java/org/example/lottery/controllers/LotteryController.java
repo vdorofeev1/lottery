@@ -34,7 +34,7 @@ public class LotteryController {
     List<Winner> allWinners() { return service.allWinners(); }
 
     @GetMapping("/lottery/start")
-    Participant start() {
+    Winner start() {
 
         return service.startLottery();
     }

@@ -1,27 +1,27 @@
 package org.example.lottery.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
 
+@Data
 @Entity
-public class Winner extends Participant {
+public class Winner {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private int age;
+    private String city;
     private int winAmount;
     protected Winner() {}
 
     public Winner(Participant participant, int winAmount) {
-        super(participant.getName(), participant.getAge(), participant.getCity());
-        this.winAmount = winAmount;
-    }
-
-    public Winner(String name, Integer age, String city, Integer winAmount) {
-        super(name, age, city);
-        this.winAmount = winAmount;
-    }
-
-    public Integer getWinAmount() {
-        return winAmount;
-    }
-
-    public void setWinAmount(Integer winAmount) {
+        this.name = participant.getName();
+        this.age = participant.getAge();
+        this.city = participant.getCity();
         this.winAmount = winAmount;
     }
 }

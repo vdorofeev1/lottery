@@ -39,7 +39,7 @@ public class LotteryService {
         return winnerRepository.findAll();
     }
 
-    public Participant startLottery() {
+    public Winner startLottery() {
         if (enoughParticipants()) {
             Winner winner = getWinner();
             participantRepository.deleteAll();
