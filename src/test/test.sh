@@ -17,7 +17,7 @@ echo "____LISTING WINNERS____"
 curl -v localhost:8080/lottery/winners
 
 echo ""
-echo "____LISTING PARTICIPANTS(idk why its not empty)____"
+echo "____LISTING PARTICIPANTS____"
 curl -v localhost:8080/lottery/participant
 
 

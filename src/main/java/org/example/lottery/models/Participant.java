@@ -1,12 +1,14 @@
 package org.example.lottery.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Participant {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -14,8 +16,6 @@ public class Participant {
     private String name;
     private Integer age;
     private String city;
-
-    protected Participant(){}
 
     public Participant(String name, Integer age, String city) {
         this.name = name;

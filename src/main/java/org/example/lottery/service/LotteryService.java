@@ -25,11 +25,11 @@ public class LotteryService {
     private static final int MIN_PARTICIPANTS_THRESHOLD = 2;
     private static final int MAX_WIN_AMOUNT = 1000;
 
-    public void addParticipant(Participant participant) {
-        participantRepository.save(participant);
+    public Participant addParticipant(Participant participant) {
+        return participantRepository.save(participant);
     }
 
-    public void addWinner(Winner winner) { winnerRepository.save(winner); }
+    public Winner addWinner(Winner winner) { return winnerRepository.save(winner); }
 
     public List<Participant> allParticipants() {
         return participantRepository.findAll();
