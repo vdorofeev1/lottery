@@ -10,7 +10,8 @@ import lombok.Data;
 @Entity
 public class Winner {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long winnerId;
     private Long id;
     private String name;
     private int age;
@@ -19,6 +20,7 @@ public class Winner {
     protected Winner() {}
 
     public Winner(Participant participant, int winAmount) {
+        this.id = participant.getId();
         this.name = participant.getName();
         this.age = participant.getAge();
         this.city = participant.getCity();
