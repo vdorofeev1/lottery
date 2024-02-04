@@ -3,6 +3,7 @@ package org.example.lottery.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name = "participant")
 @Getter
 @Data
 @Entity
@@ -11,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Participant {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer age;

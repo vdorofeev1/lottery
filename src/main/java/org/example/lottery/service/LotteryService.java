@@ -43,6 +43,7 @@ public class LotteryService {
         if (enoughParticipants()) {
             Winner winner = getWinner();
             participantRepository.deleteAll();
+            participantRepository.resetIdCounter();
             addWinner(winner);
             return winner;
         } else {
