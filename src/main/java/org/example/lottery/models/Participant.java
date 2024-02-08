@@ -1,10 +1,18 @@
 package org.example.lottery.models;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Builder;
 
 @Table(name = "participant")
-@Getter
 @Data
 @Entity
 @Builder
@@ -13,10 +21,10 @@ import lombok.*;
 public class Participant {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private Integer age;
-    private String city;
+    public Long id;
+    public String name;
+    public Integer age;
+    public String city;
 
     public Participant(String name, Integer age, String city) {
         this.name = name;
