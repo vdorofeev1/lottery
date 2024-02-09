@@ -1,11 +1,10 @@
 package org.example.lottery.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.lottery.service.LotteryService;
 import org.example.lottery.models.Participant;
 import org.example.lottery.models.Winner;
+import org.example.lottery.service.LotteryService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 

@@ -1,5 +1,6 @@
 package org.example.lottery.service;
 
+
 import lombok.RequiredArgsConstructor;
 import org.example.lottery.exceptions.NotEnoughParticipantsException;
 import org.example.lottery.exceptions.ParticipantNotFound;
@@ -7,12 +8,10 @@ import org.example.lottery.models.Participant;
 import org.example.lottery.models.Winner;
 import org.example.lottery.repository.ParticipantRepository;
 import org.example.lottery.repository.WinnerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Random;
 
 @RequiredArgsConstructor
 @Service
