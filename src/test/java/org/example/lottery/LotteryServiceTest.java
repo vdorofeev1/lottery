@@ -1,6 +1,5 @@
 package org.example.lottery;
 
-import org.example.lottery.exceptions.NotEnoughParticipantsException;
 import org.example.lottery.models.Participant;
 import org.example.lottery.repository.ParticipantRepository;
 import org.example.lottery.repository.WinnerRepository;
