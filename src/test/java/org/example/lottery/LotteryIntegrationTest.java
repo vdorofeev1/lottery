@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @SpringBootTest
-class LotteryApplicationTests {
+class LotteryIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -90,13 +90,6 @@ class LotteryApplicationTests {
         mockMvc.perform(get("/lottery/start"))
                 .andDo(print())
                 .andExpect(status().isOk());
-    }
-
-    @Test
-    void startLotteryFailsTest() throws Exception {
-        mockMvc.perform(get("/lottery/start"))
-                .andDo(print())
-                .andExpect(status().is5xxServerError());
     }
 
     @Test

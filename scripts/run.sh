@@ -3,14 +3,13 @@
 VERSION=$(grep -oP '"VERSION": "\K[^"]+' scripts/upkg.json)
 NAME=$(grep -oP '"NAME": "\K[^"]+' scripts/upkg.json)
 
-mvn clean install -DVERSION="$VERSION" -DNAME="$NAME"
+/bin/bash build.sh
 
-DOCKER_FOLDER="docker"
 echo $VERSION
 echo $NAME
 
-cp target/${NAME}-${VERSION}.jar $DOCKER_FOLDER/app.jar
-chmod a+x scripts/buildDocker.sh
-/bin/bash scripts/buildDocker.sh
+cp target/${NAME}-${VERSION}.jar $DOCKER_FOLDER/${NAME}-${VERSION}.jar
+chmod a+x scripts/buildDockerImage.sh
+/bin/bash scripts/buildDockerImage.sh
 
 java -jar target/${NAME}-${VERSION}.jar

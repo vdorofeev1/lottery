@@ -1,6 +1,9 @@
 FROM openjdk:17-oracle
 
-ADD ./app.jar /bin/
-CMD java -jar /bin/app.jar
+ARG VERSION
+ARG NAME
+
+ADD ./${NAME}-${VERSION}.jar /bin/
+CMD java -jar /bin/${NAME}-${VERSION}.jar
 
 EXPOSE 8080
