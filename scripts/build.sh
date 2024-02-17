@@ -6,4 +6,4 @@ NAME=$(grep -oP '"NAME": "\K[^"]+' scripts/upkg.json)
 echo $VERSION
 echo $NAME
 
-#mvn clean install -DVERSION="$VERSION" -DNAME="$NAME"
+mvn clean install -DskipTests -DVERSION="$VERSION" -DNAME="$NAME"
