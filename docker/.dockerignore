@@ -1,0 +1,9 @@
+# Exclude temporary files
+*.tmp
+*.log
+*.bak
+
+scripts/
+
+.git
+.gitignore
