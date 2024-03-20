@@ -1,41 +1,51 @@
 package org.example.lottery.controllers;
 
-import org.example.lottery.service.LotteryService;
+import lombok.RequiredArgsConstructor;
+import org.example.lottery.dto.ParticipantDto;
+import org.example.lottery.dto.WinnerDto;
 import org.example.lottery.models.Participant;
 import org.example.lottery.models.Winner;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import org.example.lottery.service.LotteryService;
+import org.modelmapper.ModelMapper;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+@RequestMapping("/lottery")
+@RequiredArgsConstructor
 @RestController
 public class LotteryController {
 
     private final LotteryService service;
 
-    LotteryController(LotteryService service) {
-        this.service = service;
-    }
-
-    @PostMapping("/lottery/participant")
-    void addParticipant(@RequestBody Participant participant) {
+    private final ModelMapper modelMapper;
+    @PostMapping("/participant")
+    void addParticipant(@RequestBody ParticipantDto participantDto) {
+        Participant participant = modelMapper.map(participantDto, Participant.class);
         service.addParticipant(participant);
     }
 
-    @GetMapping("/lottery/participant")
-    List<Participant> allParticipants() {
-        return service.allParticipants();
+    @GetMapping("/participant")
+    List<ParticipantDto> allParticipants() {
+
+        return service.allParticipants()
+                .stream()
+                .map(participant -> modelMapper.map(participant, ParticipantDto.class))
+                .collect(Collectors.toList());
     }
 
-    @GetMapping("/lottery/winners")
-    List<Winner> allWinners() { return service.allWinners(); }
+    @GetMapping("/winners")
+    List<WinnerDto> allWinners() {
+        return service.allWinners()
+                .stream()
+                .map(winner -> modelMapper.map(winner, WinnerDto.class))
+                .collect(Collectors.toList());
+    }
 
-    @GetMapping("/lottery/start")
-    Winner start() {
+    @GetMapping("/start")
+    WinnerDto start() {
 
-        return service.startLottery();
+        return modelMapper.map(service.startLottery(), WinnerDto.class);
     }
 }

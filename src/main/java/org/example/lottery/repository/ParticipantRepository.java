@@ -10,7 +10,7 @@ public interface ParticipantRepository extends JpaRepository<Participant, Long> 
 
     @Modifying
     @Transactional
-    @Query(value = "ALTER TABLE participant ALTER COLUMN id RESTART WITH 1", nativeQuery = true)
+    @Query(value = "TRUNCATE TABLE participant RESTART IDENTITY", nativeQuery = true)
     void resetIdCounter();
 }
 

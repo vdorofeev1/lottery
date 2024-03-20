@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Winner {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long winnerId;
     
     private Long id;
@@ -23,10 +23,10 @@ public class Winner {
     private String city;
     private int winAmount;
     public Winner(Participant participant, int winAmount) {
-        this.id = participant.getId();
-        this.name = participant.getName();
-        this.age = participant.getAge();
-        this.city = participant.getCity();
+        this.id = participant.id;
+        this.name = participant.name;
+        this.age = participant.age;
+        this.city = participant.city;
         this.winAmount = winAmount;
     }
 
