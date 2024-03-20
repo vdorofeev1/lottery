@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  title: Lottery API
+  description: API for managing lottery participants and winners
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /lottery/participant:
+    post:
+      summary: Add a participant to the lottery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParticipantDto'
+      responses:
+        '200':
+          description: Participant added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParticipantDto'
+  /lottery/participant:
+    get:
+      summary: Get all participants
+      responses:
+        '200':
+          description: List of all participants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParticipantDto'
+  /lottery/winners:
+    get:
+      summary: Get all winners
+      responses:
+        '200':
+          description: List of all winners
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WinnerDto'
+  /lottery/start:
+    get:
+      summary: Start the lottery
+      responses:
+        '200':
+          description: Winner of the lottery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WinnerDto'
+components:
+  schemas:
+    ParticipantDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the participant
+        age:
+          type: integer
+          format: int32
+          description: Age of the participant
+        city:
+          type: string
+          description: City of the participant
+    WinnerDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the winner
+        age:
+          type: integer
+          format: int32
+          description: Age of the winner
+        city:
+          type: string
+          description: City of the winner
+        winAmount:
+          type: integer
+          format: int32
+          description: Amount won by the winner
+
