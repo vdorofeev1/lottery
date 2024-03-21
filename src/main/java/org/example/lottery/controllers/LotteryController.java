@@ -1,5 +1,6 @@
 package org.example.lottery.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.lottery.dto.ParticipantDto;
 import org.example.lottery.dto.WinnerDto;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Tag(name = "main_methods")
 @RequestMapping("/lottery")
 @RequiredArgsConstructor
 @RestController
@@ -21,9 +23,10 @@ public class LotteryController {
 
     private final ModelMapper modelMapper;
     @PostMapping("/participant")
-    void addParticipant(@RequestBody ParticipantDto participantDto) {
+    ParticipantDto addParticipant(@RequestBody ParticipantDto participantDto) {
         Participant participant = modelMapper.map(participantDto, Participant.class);
         service.addParticipant(participant);
+        return participantDto;
     }
 
     @GetMapping("/participant")
