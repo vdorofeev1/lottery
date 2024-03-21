@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>org.example</groupId>
     <properties>
@@ -15,6 +15,8 @@
         <project.version>${VERSION}</project.version>
         <!--suppress UnresolvedMavenProperty -->
         <project.name>${NAME}</project.name>
+        <version.springdoc>2.2.0</version.springdoc>
+        <version.modelmapper>3.2.0</version.modelmapper>
     </properties>
     <artifactId>Lottery</artifactId>
     <version>0.0.1</version>
@@ -25,7 +27,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -49,22 +50,17 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
-            <version>3.2.0</version>
+            <version>${version.modelmapper}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.2.0</version>
+            <version>${version.springdoc}</version>
         </dependency>
-
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -73,5 +69,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
